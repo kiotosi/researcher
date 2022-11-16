@@ -4,6 +4,10 @@ interface Route {
 }
 
 export default {
+  home: {
+    name: 'Home',
+    path: '/'
+  } as Route,
   link: {
     name: 'Link',
     path: '/link'
