@@ -1,0 +1,20 @@
+{
+  "folders": [
+    {
+      "name": "🌳 Root",
+      "path": "../"
+    },
+    {
+      "name": "🚀 Frontend",
+      "path": "../src"
+    },
+    {
+      "name": "🦀 Rust",
+      "path": "../src-tauri"
+    },
+    {
+      "name": "📦 Public",
+      "path": "../public"
+    }
+  ]
+}

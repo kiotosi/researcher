@@ -1,0 +1,16 @@
+{
+  "search.useIgnoreFiles": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    
+    // Hide files, that we already have as workspace folders
+    "**/src": true,
+    "**/src-tauri": true,
+    "**/public": true
+  }
+}
