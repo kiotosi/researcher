@@ -1,0 +1,39 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiGreen",
+        "id": "device-desktop"
+      },
+      "label": "Development mode",
+      "detail": "Start Tauri app in development mode"
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "group": "build",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiBlue",
+        "id": "light-bulb"
+      },
+      "label": "Build",
+      "detail": "Build Project"
+    },
+    {
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": [],
+      "icon": {
+        "color": "terminal.ansiYellow",
+        "id": "list-selection"
+      },
+      "label": "Lint",
+      "detail": "Lint Project"
+    }
+  ],
+}
