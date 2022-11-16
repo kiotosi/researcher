@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { bootstrapWorkspaceList, bootstrapConfig } from './utils/bootstrapConfig';
 import { useConfigStore } from './store/configStore';
 import { LAST_USED_WORKSPACE } from './data/localStorage.define';
 import { DEFAULT_WORKSPACE_ID } from './data/config.define';
+import LoaderMain from './components/loader/LoaderMain.vue';
 
 const configStore = useConfigStore();
+const isAppLoading = ref(true);
 
 onMounted(async () => {
 
@@ -36,13 +38,14 @@ onMounted(async () => {
   configStore.workspaceList = workspaceList;
   configStore.config = config;
 
-  console.log(configStore.config, configStore.workspaceList);
+  // Turn off loading of the app
+  isAppLoading.value = false;
 });
 </script>
 
 <template>
-  <div class="container">
-
+  <LoaderMain v-if="isAppLoading" />
+  <div v-else class="container">
   </div>
 </template>
 
