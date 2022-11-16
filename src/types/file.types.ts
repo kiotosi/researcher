@@ -1,8 +1,7 @@
 export interface Config {
   sections: Section[]
   password: string,
-  isAuthorized: boolean
-  isLicensed: boolean
+  isSynced: boolean
 }
 
 export interface Section {

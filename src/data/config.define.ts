@@ -2,10 +2,11 @@ import routes from '../data/router.define';
 import type { Config, Workspace } from '../types/file.types';
 import { LINK_JSON, BOOK_JSON, NOTE_JSON, VIDEO_JSON} from '../data/path.define';
 
+export const DEFAULT_WORKSPACE_ID = 0;
+
 // Default config
 export const DEFAULT_CONFIG: Config = {
-  isAuthorized: false,
-  isLicensed: false,
+  isSynced: false,
   password: '',
   sections: [
     {
