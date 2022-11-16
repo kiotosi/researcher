@@ -7,16 +7,19 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "researcher",
+    "productName": "Researcher",
     "version": "0.0.0"
   },
   "tauri": {
     "allowlist": {
-      "all": true
+      "all": true,
+      "fs": {
+        "scope": ["**"]
+      }
     },
     "bundle": {
       "active": true,
-      "category": "DeveloperTool",
+      "category": "Productivity",
       "copyright": "",
       "deb": {
         "depends": []
@@ -29,7 +32,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "com.researcher.0xdood2bad",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -56,10 +59,12 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 650,
         "resizable": true,
-        "title": "researcher",
-        "width": 800
+        "title": "Researcher: Your content by categories",
+        "width": 1220,
+        "minHeight": 650,
+        "minWidth": 1000
       }
     ]
   }

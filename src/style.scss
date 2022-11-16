@@ -1,9 +1,19 @@
+@import "style/colors";
+@import "style/fonts";
+
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  // Font sizes
+  --fz-header-1: 32px;
+  --fz-header-2: 24px;
+  --fz-header-3: 20px;
+  --fz-normal: 16px;
+  --fz-small: 14px;
 }
 
 a {
