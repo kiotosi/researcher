@@ -10,7 +10,7 @@ export const DEFAULT_CONFIG: Config = {
   password: '',
   sections: [
     {
-      title: 'Links',
+      title: 'link',
       emoji: '🔗',
       id: 0,
       path: LINK_JSON,
@@ -19,7 +19,7 @@ export const DEFAULT_CONFIG: Config = {
       isActive: true
     },
     {
-      title: 'Books',
+      title: 'book',
       emoji: '📚',
       id: 1,
       path: BOOK_JSON,
@@ -28,7 +28,7 @@ export const DEFAULT_CONFIG: Config = {
       isActive: true
     },
     {
-      title: 'Videos',
+      title: 'video',
       emoji: '📼',
       id: 2,
       hrefName: VIDEO_JSON,
@@ -37,7 +37,7 @@ export const DEFAULT_CONFIG: Config = {
       isActive: true
     },
     {
-      title: 'Notes',
+      title: 'note',
       emoji: '📝',
       id: 3,
       hrefName: NOTE_JSON,

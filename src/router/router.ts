@@ -11,8 +11,8 @@ const routes: RouteRecordRaw[] = [
     component: HomeView
   },
   {
-    path: routeInfo.home.path,
-    name: routeInfo.home.name,
+    path: routeInfo.link.path,
+    name: routeInfo.link.name,
     component: LinkView
   }
 ];

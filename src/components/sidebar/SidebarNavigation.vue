@@ -6,7 +6,7 @@ import { useConfigStore } from '../../store/configStore';
 const router = useRouter();
 const configStore = useConfigStore();
 const activeSections = computed(() => configStore.activeSections);
-
+console.log(router.getRoutes());
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const activeSections = computed(() => configStore.activeSections);
             {{ section.emoji }}
           </div>
           <div class="section__name">
-            {{ section.title }}
+            {{ $t('sidebar.sectionNames.' + section.title) }}
           </div>
         </div>
       </li>
@@ -60,6 +60,11 @@ const activeSections = computed(() => configStore.activeSections);
 
   &__name {
     margin-left: 12px;
+    user-select: none;
+  }
+
+  &__emoji {
+    user-select: none;
   }
 
   &:hover {
