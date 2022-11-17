@@ -14,7 +14,7 @@ const currentRoute = computed(() => router.currentRoute.value);
 
 <template>
   <div class="sidebar">
-    <SidebarWorkspace class="sidebar__workspace" />
+    <SidebarWorkspace />
     <SidebarSearch class="sidebar__search" />
     <SidebarNavigation
       v-show="currentRoute.path === routes.home.path"
@@ -34,11 +34,11 @@ const currentRoute = computed(() => router.currentRoute.value);
   position: relative;
 
   &__search {
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
   &__section-list {
-    margin-top: 18px;
+    margin-top: 24px;
   }
 }
 </style>

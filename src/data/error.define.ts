@@ -4,5 +4,13 @@ export default {
       workspace: 'Can\'t load workspace.json in configuration folder!',
       config: 'Can\'t load config.json in workspace folder!'
     }
+  },
+  save: {
+    file: {
+      workspace: 'Can\'t save new workspace to workspace.json!',
+      config: 'Can\'t save new configuration to config.json!'
+    }
   }
 }
+
+export const PANIC_ERROR = 'Дядя, все плохо';

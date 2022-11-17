@@ -6,6 +6,10 @@ import debounce from '../../utils/debounce';
 const inputText = ref('');
 const debounceSearch = debounce(() => search(inputText.value), 250);
 
+/**
+ * Search through the all content in workspace
+ * @param text Input text
+ */
 function search(text: string) {
   console.log(text);
 }
@@ -13,7 +17,14 @@ function search(text: string) {
 
 <template>
   <div class="sidebar-search">
-    <input @input="debounceSearch" v-model="inputText" placeholder="Search for something.." spellcheck="false" type="text" class="sidebar-search__input">
+    <input
+      v-model="inputText"
+      placeholder="Search for something.."
+      spellcheck="false"
+      type="text"
+      class="sidebar-search__input"
+      @input="debounceSearch"
+    >
     <div class="sidebar-search__hotkey">
       <HotkeyMain
         :is-command="true"
@@ -28,6 +39,7 @@ function search(text: string) {
   position: relative;
   background-color: var(--color-normal-20);
   border: 1px solid var(--color-normal-30);
+  border-radius: 4px;
   display: flex;
   align-items: center;
 
@@ -37,7 +49,6 @@ function search(text: string) {
     border: none;
     background-color: transparent;
     padding: 10px 12px;
-    border-radius: 4px;
     font-weight: 500;
 
 

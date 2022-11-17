@@ -39,6 +39,7 @@ onMounted(async () => {
   // Save configurations into store
   configStore.workspaceList = workspaceList;
   configStore.config = config;
+  configStore.currentWorkspace = lastUsedWorkspace;
 
   // Turn off loading of the app
   isAppLoading.value = false;
