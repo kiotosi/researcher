@@ -1,7 +1,12 @@
-import { readTextFile, BaseDirectory, createDir, writeTextFile } from '@tauri-apps/api/fs';
-import { CONFIG_ROOT, CONFIG_JSON } from '../data/path.define';
-import { DEFAULT_CONFIG } from '../data/config.define';
-import type { Config, Workspace } from '../types/file.types';
+import {
+  readTextFile,
+  BaseDirectory,
+  createDir,
+  writeTextFile,
+} from "@tauri-apps/api/fs";
+import { CONFIG_ROOT, CONFIG_JSON } from "../data/path.define";
+import { DEFAULT_CONFIG } from "../data/config.define";
+import type { Config, Workspace } from "../types/file.types";
 
 /**
  * Initialize default config in selected workspace
@@ -9,10 +14,9 @@ import type { Config, Workspace } from '../types/file.types';
  * @returns Default config
  */
 export async function initConfig(workspace: Workspace) {
-  
   // Trying to create a directory for check if directory exists
   await createDir(`${CONFIG_ROOT}/${workspace.path}`).catch(console.info);
-  
+
   // Writing new configuration file
   await writeTextFile(
     `${CONFIG_ROOT}/${workspace.path}/${CONFIG_JSON}`,
@@ -29,13 +33,12 @@ export async function initConfig(workspace: Workspace) {
  * @returns Configuration from workspace
  */
 export async function loadConfig(workspace: Workspace): Promise<Config> {
-  
   // Trying to reach the configuration file
   // If file is unavailable - rejecting the promise
   try {
     const configRaw = await readTextFile(
       `${CONFIG_ROOT}/${workspace.path}/${CONFIG_JSON}`,
-      {dir: BaseDirectory.Config}
+      { dir: BaseDirectory.Config }
     );
     return JSON.parse(configRaw);
   } catch (_) {
@@ -50,7 +53,7 @@ export async function loadConfig(workspace: Workspace): Promise<Config> {
  */
 export async function saveConfig(workspace: Workspace, config: Config) {
   const configRaw = JSON.stringify(config);
-  
+
   // Trying to create a directory for check if directory exists
   await createDir(`${CONFIG_ROOT}/${workspace.path}`).catch(console.info);
   await writeTextFile(
