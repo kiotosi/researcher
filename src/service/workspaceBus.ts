@@ -1,5 +1,10 @@
-import { BaseDirectory, createDir, readTextFile, writeFile } from "@tauri-apps/api/fs";
-import { CONFIG_ROOT, WORKSPACE_JSON } from '../data/path.define';
+import {
+  BaseDirectory,
+  createDir,
+  readTextFile,
+  writeFile,
+} from "@tauri-apps/api/fs";
+import { CONFIG_ROOT, WORKSPACE_JSON } from "../data/path.define";
 import { DEFAULT_WORKSPACE } from "../data/config.define";
 import type { Workspace } from "../types/file.types";
 
@@ -31,7 +36,7 @@ export async function initWorkspace(): Promise<Workspace> {
 export async function loadWorkspaces(): Promise<Workspace[]> {
   const workspaceListRaw = await readTextFile(
     `${CONFIG_ROOT}/${WORKSPACE_JSON}`,
-    {dir: BaseDirectory.Config}
+    { dir: BaseDirectory.Config }
   );
   return JSON.parse(workspaceListRaw);
 }

@@ -1,8 +1,8 @@
 import App from "./App.vue";
 import routerOptions from "./router/router";
-import enDictionary from './locales/en';
+import enDictionary from "./locales/en";
 
-import {createPinia} from 'pinia';
+import { createPinia } from "pinia";
 import { createApp } from "vue";
 import { createRouter } from "vue-router";
 import { createI18n } from "vue-i18n";
@@ -13,15 +13,14 @@ import "./style.scss";
 const app = createApp(App);
 const router = createRouter(routerOptions);
 const pinia = createPinia();
-const i18n = createI18n<[typeof enDictionary], 'en'>({
+const i18n = createI18n<[typeof enDictionary], "en">({
   legacy: false,
   globalInjection: true,
-  locale: 'en',
+  locale: "en",
   messages: {
-    'en': enDictionary
-  }
+    en: enDictionary,
+  },
 });
-
 
 // Using a bunch of plugins
 app.use(router);
