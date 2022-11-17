@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import SidebarMain from './components/sidebar/SidebarMain.vue';
+
 import { onMounted, ref } from 'vue';
 import { bootstrapWorkspaceList, bootstrapConfig } from './utils/bootstrapConfig';
 import { useConfigStore } from './store/configStore';
@@ -44,8 +46,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <LoaderMain v-if="isAppLoading" />
-  <div v-else class="container">
+  <div class="container">
+    <SidebarMain />
+    <RouterView />
   </div>
 </template>
 
