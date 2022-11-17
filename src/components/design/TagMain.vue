@@ -25,7 +25,7 @@ defineProps({
   align-items: center;
 
   width: fit-content;
-  padding: 6px 10px;
+  padding: 4px 6px;
 
   background-color: var(--color-normal-20);
   border: 1px solid var(--color-normal-30);

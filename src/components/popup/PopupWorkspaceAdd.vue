@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InputMain from '../design/InputMain.vue';
 import PopupMain from './PopupMain.vue';
-import {computed, ref} from 'vue';
+import {computed, ref, onMounted, onUnmounted} from 'vue';
 import type { Workspace } from '../../types/file.types';
 import ButtonMain from '../design/ButtonMain.vue';
 import { useConfigStore } from '../../store/configStore';
@@ -68,6 +68,32 @@ async function addNewWorkspace() {
   configStore.workspaceList.push(newWorkspace);
   emit('close');
 }
+
+/**
+ * Handle hotkeys for popup
+ * @param ev Keyboard event
+ */
+async function handleHotkeys(ev: KeyboardEvent) {
+  if (ev.key === 'Escape') {
+    ev.stopPropagation();
+    emit('close');
+    return;
+  }
+
+  if (ev.key === 'Enter') {
+    ev.stopPropagation();
+    await addNewWorkspace();
+    return;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', handleHotkeys);
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleHotkeys);
+})
 </script>
 
 <template>

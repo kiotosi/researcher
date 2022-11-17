@@ -19,3 +19,8 @@ export interface Workspace {
   name: string,
   path: string
 }
+
+export interface Tag {
+  name: string,
+  id: number,
+}
