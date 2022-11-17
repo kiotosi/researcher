@@ -4,9 +4,9 @@ import { useRouter } from 'vue-router';
 import { useConfigStore } from '../../store/configStore';
 
 const router = useRouter();
+const currentRouteLink = computed(() => router.currentRoute.value.path);
 const configStore = useConfigStore();
 const activeSections = computed(() => configStore.activeSections);
-console.log(router.getRoutes());
 </script>
 
 <template>
@@ -16,6 +16,7 @@ console.log(router.getRoutes());
         v-for="section in activeSections"
         :key="section.id"
         class="navigation-list__item section"
+        :class="{'section_active': section.hrefName === currentRouteLink}"
         @click="router.push(section.hrefName)"
       >
         <div class="section__description">
@@ -73,5 +74,9 @@ console.log(router.getRoutes());
     border-color: var(--color-normal-40);
   }
 
+  &_active {
+    background-color: var(--color-normal-20);
+    border-color: var(--color-normal-30);
+  }
 }
 </style>

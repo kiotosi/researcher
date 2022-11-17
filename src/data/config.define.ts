@@ -31,8 +31,8 @@ export const DEFAULT_CONFIG: Config = {
       title: 'video',
       emoji: '📼',
       id: 2,
-      hrefName: VIDEO_JSON,
-      path: routes.video.path,
+      hrefName: routes.video.path,
+      path: VIDEO_JSON,
       order: 2,
       isActive: true
     },
@@ -40,8 +40,8 @@ export const DEFAULT_CONFIG: Config = {
       title: 'note',
       emoji: '📝',
       id: 3,
-      hrefName: NOTE_JSON,
-      path: routes.link.path,
+      hrefName: routes.note.path,
+      path: NOTE_JSON,
       order: 3,
       isActive: true
     }
