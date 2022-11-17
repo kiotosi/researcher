@@ -14,4 +14,10 @@ export const useConfigStore = defineStore('config', {
       workspaceList: [DEFAULT_WORKSPACE]
     }
   },
+
+  getters: {
+    activeSections: (state) => {
+      return state.config.sections.filter(section => section.isActive);
+    }
+  }
 });

@@ -46,7 +46,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="container">
+  <LoaderMain v-if="isAppLoading" />
+  <div
+    v-else
+    class="container"
+  >
     <SidebarMain />
     <RouterView />
   </div>
