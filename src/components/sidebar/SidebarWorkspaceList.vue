@@ -2,15 +2,15 @@
 import PopupWorkspaceAdd from '../popup/PopupWorkspaceAdd.vue';
 import PlusIconCircle from 'vue-material-design-icons/PlusCircle.vue';
 import TrashIcon from 'vue-material-design-icons/Delete.vue';
+import PopupWorkspaceRemove from '../popup/PopupWorkspaceRemove.vue';
 import errors from '../../data/error.define';
 import { computed, ref } from 'vue';
 import { useConfigStore } from '../../store/configStore';
-import { loadConfig } from '../../service/configBus';
+import { loadFile } from '../../service/innerWorkspaceBus';
 import { LAST_USED_WORKSPACE } from '../../data/localStorage.define';
-import type { Workspace } from '../../types/file.types';
-import PopupWorkspaceRemove from '../popup/PopupWorkspaceRemove.vue';
-import { loadTagList } from '../../service/tagBus';
 import { useTagStore } from '../../store/tagStore';
+import { CONFIG_JSON, TAGLIST_JSON } from '../../data/path.define';
+import type { Config, Tag, Workspace } from '../../types/file.types';
 
 const emit = defineEmits(['close']);
 const isAdding = ref(false);
@@ -34,7 +34,7 @@ async function chooseWorkspace(workspace: Workspace) {
 
   // Try to load configuration from `workspace.path/config.json`
   try {
-    const config = await loadConfig(workspace);
+    const config = await loadFile<Config>(workspace, CONFIG_JSON);
     configStore.config = config;
     configStore.currentWorkspace = workspace;
     localStorage.setItem(LAST_USED_WORKSPACE, workspace.id.toString());
@@ -44,7 +44,7 @@ async function chooseWorkspace(workspace: Workspace) {
 
   // Try to load tag list from `workspace.path/tags.json`
   try {
-    const tagList = await loadTagList(workspace);
+    const tagList = await loadFile<Tag[]>(workspace, TAGLIST_JSON);
     tagStore.tags = tagList;
   } catch (e) {
     console.error(errors.load.file.tag, e);

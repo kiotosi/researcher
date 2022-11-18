@@ -1,18 +1,17 @@
 <script setup lang="ts">
 import SidebarMain from './components/sidebar/SidebarMain.vue';
-
+import LoaderMain from './components/loader/LoaderMain.vue';
 import { onMounted, ref } from 'vue';
 import {
   bootstrapWorkspaceList,
-  bootstrapConfig,
 } from './utils/bootstrapConfig';
 import { useConfigStore } from './store/configStore';
 import { useTagStore } from './store/tagStore';
 import { LAST_USED_WORKSPACE } from './data/localStorage.define';
-import { DEFAULT_WORKSPACE_ID } from './data/config.define';
-import LoaderMain from './components/loader/LoaderMain.vue';
-import { initTagList, loadTagList } from './service/tagBus';
-import type { Tag } from './types/file.types';
+import { DEFAULT_CONFIG, DEFAULT_WORKSPACE_ID } from './data/config.define';
+import { loadFile, saveFile } from './service/innerWorkspaceBus';
+import { CONFIG_JSON, TAGLIST_JSON } from './data/path.define';
+import type { Config, Tag } from './types/file.types';
 
 const configStore = useConfigStore();
 const tagStore = useTagStore();
@@ -43,19 +42,31 @@ onMounted(async () => {
   }
 
   // Bootstraping config.json file in workspace folder
-  const config = await bootstrapConfig(lastUsedWorkspace);
+  let config: Config;
+  console.group('Config file');
+  try {
+    console.info('Trying to load config.json');
+    config = await loadFile<Config>(lastUsedWorkspace, CONFIG_JSON);
+  } catch (e) {
+    console.error(e);
+    console.info('Trying to create config.json');
+    await saveFile(lastUsedWorkspace, CONFIG_JSON, DEFAULT_CONFIG);
+    config = DEFAULT_CONFIG;
+  }
+  console.info('Success!');
+  console.groupEnd();
 
-  // TODO: Make loading of config.json and tags.json by one function - `loadWorkspaceFile(name: string)`
   // Try to load tags.json
   let tagList: Tag[];
   console.group('Tags file');
   try {
     console.info('Trying to load tags.json');
-    tagList = await loadTagList(lastUsedWorkspace);
+    tagList = await loadFile<Tag[]>(lastUsedWorkspace, TAGLIST_JSON);
   } catch (e) {
     console.error(e);
     console.info('Trying to create tags.json');
-    tagList = await initTagList(lastUsedWorkspace);
+    await saveFile(lastUsedWorkspace, TAGLIST_JSON, []);
+    tagList = [];
   }
   console.info('Success!');
   console.groupEnd();

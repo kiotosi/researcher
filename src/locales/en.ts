@@ -1,10 +1,10 @@
 export default {
   sidebar: {
     sectionNames: {
-      link: 'Links',
-      book: 'Books',
-      video: 'Videos',
-      note: 'Notes',
+      Links: 'Links',
+      Books: 'Books',
+      Videos: 'Videos',
+      Notes: 'Notes',
     },
     workspace: {
       add: 'Add new workspace',

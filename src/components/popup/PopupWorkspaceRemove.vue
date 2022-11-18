@@ -6,7 +6,7 @@ import type { Workspace } from '../../types/file.types';
 import ButtonMain from '../design/ButtonMain.vue';
 import { useConfigStore } from '../../store/configStore';
 import { saveWorkspace } from '../../service/workspaceBus';
-import { removeConfigDir } from '../../service/configBus';
+import { removeConfigDir } from '../../service/innerWorkspaceBus';
 import errors from '../../data/error.define';
 
 interface PopupWorkspaceRemoveProps {

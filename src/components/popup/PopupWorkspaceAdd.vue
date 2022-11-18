@@ -7,8 +7,9 @@ import ButtonMain from '../design/ButtonMain.vue';
 import { useConfigStore } from '../../store/configStore';
 import { saveWorkspace } from '../../service/workspaceBus';
 import errors from '../../data/error.define';
-import { saveConfig } from '../../service/configBus';
+import { saveFile } from '../../service/innerWorkspaceBus';
 import { DEFAULT_CONFIG } from '../../data/config.define';
+import { CONFIG_JSON, TAGLIST_JSON } from '../../data/path.define';
 
 const emit = defineEmits(['close']);
 const name = ref('');
@@ -27,6 +28,10 @@ const isInvalid = computed(() => {
   );
 });
 
+/**
+ * Handle input from name input
+ * @param e Keyboard event
+ */
 function onInput(e: Event) {
   const input = e.target as HTMLInputElement;
   name.value = input.value;
@@ -66,7 +71,18 @@ async function addNewWorkspace() {
 
   // Bootstrap new config
   try {
-    await saveConfig(newWorkspace, DEFAULT_CONFIG);
+    await saveFile(newWorkspace, CONFIG_JSON, DEFAULT_CONFIG);
+  } catch (e) {
+    console.error(errors.save.file.config, e);
+
+    // Return old workspace list
+    await saveWorkspace(configStore.workspaceList);
+    return;
+  }
+
+  // Bootstrap new tag list
+  try {
+    await saveFile(newWorkspace, TAGLIST_JSON, []);
   } catch (e) {
     console.error(errors.save.file.config, e);
 
