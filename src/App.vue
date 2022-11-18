@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import {
-  bootstrapWorkspaceList,
-  bootstrapConfig,
-} from "./utils/bootstrapConfig";
-import { useConfigStore } from "./store/configStore";
-import { LAST_USED_WORKSPACE } from "./data/localStorage.define";
-import { DEFAULT_WORKSPACE_ID } from "./data/config.define";
-import LoaderMain from "./components/loader/LoaderMain.vue";
+import SidebarMain from './components/sidebar/SidebarMain.vue';
+
+import { onMounted, ref } from 'vue';
+import { bootstrapWorkspaceList, bootstrapConfig } from './utils/bootstrapConfig';
+import { useConfigStore } from './store/configStore';
+import { useTagStore } from './store/tagStore';
+import { LAST_USED_WORKSPACE } from './data/localStorage.define';
+import { DEFAULT_WORKSPACE_ID } from './data/config.define';
+import LoaderMain from './components/loader/LoaderMain.vue';
+import { initTagList, loadTagList } from './service/tagBus';
+import type { Tag } from './types/file.types';
 
 const configStore = useConfigStore();
+const tagStore = useTagStore();
 const isAppLoading = ref(true);
 
 onMounted(async () => {
@@ -39,9 +42,26 @@ onMounted(async () => {
   // Bootstraping config.json file in workspace folder
   const config = await bootstrapConfig(lastUsedWorkspace);
 
+  // TODO: Make loading of config.json and tags.json by one function - `loadWorkspaceFile(name: string)`
+  // Try to load tags.json
+  let tagList: Tag[];
+  console.group('Tags file')
+  try {
+    console.info('Trying to load tags.json');
+    tagList = await loadTagList(lastUsedWorkspace);
+  } catch (e) {
+    console.error(e);
+    console.info('Trying to create tags.json');
+    tagList = await initTagList(lastUsedWorkspace);
+  }
+  console.info('Success!');
+  console.groupEnd();
+
   // Save configurations into store
   configStore.workspaceList = workspaceList;
   configStore.config = config;
+  configStore.currentWorkspace = lastUsedWorkspace;
+  tagStore.tags = tagList;
 
   // Turn off loading of the app
   isAppLoading.value = false;
@@ -50,7 +70,13 @@ onMounted(async () => {
 
 <template>
   <LoaderMain v-if="isAppLoading" />
-  <div v-else class="container"></div>
+  <div
+    v-else
+    class="container"
+  >
+    <SidebarMain />
+    <RouterView />
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

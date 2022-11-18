@@ -11,10 +11,10 @@ const routes: RouteRecordRaw[] = [
     component: HomeView,
   },
   {
-    path: routeInfo.home.path,
-    name: routeInfo.home.name,
-    component: LinkView,
-  },
+    path: routeInfo.link.path,
+    name: routeInfo.link.name,
+    component: LinkView
+  }
 ];
 
 export default {

@@ -1,31 +1,26 @@
-interface Route {
-  name: string;
-  path: string;
-}
-
 export default {
   home: {
-    name: "Home",
-    path: "/",
-  } as Route,
+    name: 'Home',
+    path: '/'
+  },
   link: {
-    name: "Link",
-    path: "/link",
-  } as Route,
+    name: 'Link',
+    path: '/link'
+  },
   book: {
-    name: "Book",
-    path: "/book",
-  } as Route,
+    name: 'Book',
+    path: '/book'
+  },
   video: {
-    name: "Video",
-    path: "/video",
-  } as Route,
+    name: 'Video',
+    path: '/video'
+  },
   note: {
-    name: "Notes",
-    path: "/note",
-  } as Route,
+    name: 'Notes',
+    path: '/note'
+  },
   settings: {
-    name: "Settings",
-    path: "/settings",
-  } as Route,
-};
+    name: 'Settings',
+    path: '/settings'
+  }
+}
