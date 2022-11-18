@@ -12,6 +12,9 @@ export default {
       config: 'Can\'t save new configuration to config.json!',
       tag: "Can't save tags.json in workspace folder!",
     }
+  },
+  delete: {
+    tag: "Can't delete a tag!"
   }
 }
 

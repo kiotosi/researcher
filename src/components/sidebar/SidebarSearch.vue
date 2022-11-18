@@ -39,8 +39,8 @@ function search(text: string) {
 <template>
   <div class="sidebar-search">
     <input
-      v-model="inputText"
       ref="searchInputRef"
+      v-model="inputText"
       placeholder="Search for something.."
       spellcheck="false"
       type="text"

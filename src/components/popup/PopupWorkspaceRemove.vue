@@ -81,10 +81,10 @@ async function removeWorkspace() {
   <PopupMain @close="$emit('close')">
     <div class="popup-workspace-remove">
       <div class="popup-workspace-remove__title">
-        Remove the {{workspace.name}} workspace
+        Remove the {{ workspace.name }} workspace
       </div>
       <div class="popup-workspace-remove__text">
-        {{$t('popup.workspace.remove')}}
+        {{ $t('popup.workspace.remove') }}
       </div>
       <InputMain
         class="popup-workspace-remove__input"

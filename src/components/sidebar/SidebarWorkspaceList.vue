@@ -55,24 +55,48 @@ async function chooseWorkspace(workspace: Workspace) {
 </script>
 
 <template>
-  <div class="wrapper" @click="$emit('close')">
+  <div
+    class="wrapper"
+    @click="$emit('close')"
+  >
     <div class="workspace-list">
-      <div v-for="workspace in workspaceList" :key="workspace.id" class="workspace-list__item workspace-item"
+      <div
+        v-for="workspace in workspaceList"
+        :key="workspace.id"
+        class="workspace-list__item workspace-item"
         :class="{ 'workspace-item_active': workspace.id === currentWorkspace.id }"
-        @click.stop="chooseWorkspace(workspace)">
+        @click.stop="chooseWorkspace(workspace)"
+      >
         {{ workspace.name }}
-        <TrashIcon :size="20" v-show="workspace.id !== currentWorkspace.id" class="workspace-item__trash"
-          @click.stop="isRemoving = true; removingWorkspace = workspace" />
+        <TrashIcon
+          v-show="workspace.id !== currentWorkspace.id"
+          :size="20"
+          class="workspace-item__trash"
+          @click.stop="isRemoving = true; removingWorkspace = workspace"
+        />
       </div>
-      <div class="workspace-item workspace-item_add" @click.stop="isAdding = true">
+      <div
+        class="workspace-item workspace-item_add"
+        @click.stop="isAdding = true"
+      >
         {{ $t('sidebar.workspace.add') }}
-        <PlusIconCircle :size="18" class="workspace-item__add-icon" />
+        <PlusIconCircle
+          :size="18"
+          class="workspace-item__add-icon"
+        />
       </div>
     </div>
   </div>
   <Teleport to="#modal">
-    <PopupWorkspaceAdd v-if="isAdding" @close="isAdding = false" />
-    <PopupWorkspaceRemove v-if="isRemoving" :workspace="removingWorkspace as Workspace" @close="isRemoving = false" />
+    <PopupWorkspaceAdd
+      v-if="isAdding"
+      @close="isAdding = false"
+    />
+    <PopupWorkspaceRemove
+      v-if="isRemoving"
+      :workspace="removingWorkspace as Workspace"
+      @close="isRemoving = false"
+    />
   </Teleport>
 </template>
 
