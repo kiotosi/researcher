@@ -4,9 +4,7 @@
   <Transition>
     <div class="loader">
       <div class="loader__wrapper">
-        <h1 class="loader__heading">
-          Researcher
-        </h1>
+        <h1 class="loader__heading">Researcher</h1>
       </div>
     </div>
   </Transition>
@@ -34,8 +32,9 @@
     line-height: initial;
 
     &::after {
-      content: '...';
-      animation: dot_animation 2s infinite forwards cubic-bezier(0.165, 0.84, 0.44, 1);
+      content: "...";
+      animation: dot_animation 2s infinite forwards
+        cubic-bezier(0.165, 0.84, 0.44, 1);
       position: absolute;
       overflow: hidden;
       bottom: 0;

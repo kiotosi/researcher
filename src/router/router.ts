@@ -1,14 +1,14 @@
-import HomeView from '../views/HomeView.vue';
-import LinkView from '../views/LinkView.vue';
-import routeInfo from '../data/router.define';
+import HomeView from "../views/HomeView.vue";
+import LinkView from "../views/LinkView.vue";
+import routeInfo from "../data/router.define";
 
-import { createWebHistory, RouteRecordRaw } from "vue-router"
+import { createWebHistory, RouteRecordRaw } from "vue-router";
 
 const routes: RouteRecordRaw[] = [
   {
     path: routeInfo.home.path,
     name: routeInfo.home.name,
-    component: HomeView
+    component: HomeView,
   },
   {
     path: routeInfo.link.path,
@@ -19,5 +19,5 @@ const routes: RouteRecordRaw[] = [
 
 export default {
   routes,
-  history: createWebHistory()
-}
+  history: createWebHistory(),
+};

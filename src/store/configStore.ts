@@ -1,6 +1,6 @@
-import { defineStore } from "pinia"
+import { defineStore } from "pinia";
 import { DEFAULT_CONFIG, DEFAULT_WORKSPACE } from "../data/config.define";
-import type { Config, Workspace } from "../types/file.types"
+import type { Config, Workspace } from "../types/file.types";
 
 interface ConfigStoreState {
   config: Config,
@@ -8,7 +8,7 @@ interface ConfigStoreState {
   currentWorkspace: Workspace
 }
 
-export const useConfigStore = defineStore('config', {
+export const useConfigStore = defineStore("config", {
   state: (): ConfigStoreState => {
     return {
       config: DEFAULT_CONFIG,

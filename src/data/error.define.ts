@@ -16,6 +16,6 @@ export default {
   delete: {
     tag: "Can't delete a tag!"
   }
-}
+};
 
 export const PANIC_ERROR = 'Дядя, все плохо';
