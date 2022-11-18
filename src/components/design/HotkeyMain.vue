@@ -4,32 +4,19 @@ import ShiftIcon from 'vue-material-design-icons/AppleKeyboardShift.vue';
 import ChevronTop from 'vue-material-design-icons/ChevronUp.vue';
 
 defineProps<{
-  isCommand?: boolean
-  isAlt?: boolean,
-  isShift?: boolean,
-  hotkey: string
+  isCommand?: boolean;
+  isAlt?: boolean;
+  isShift?: boolean;
+  hotkey: string;
 }>();
-
 </script>
 
 <template>
   <Transition>
     <div class="hotkey">
-      <CommandIcon
-        v-if="isCommand"
-        class="hotkey__icon"
-        :size="14"
-      />
-      <ShiftIcon
-        v-if="isShift"
-        class="hotkey__icon"
-        :size="14"
-      />
-      <ChevronTop
-        v-if="isAlt"
-        class="hotkey__icon"
-        :size="14"
-      />
+      <CommandIcon v-if="isCommand" class="hotkey__icon" :size="14" />
+      <ShiftIcon v-if="isShift" class="hotkey__icon" :size="14" />
+      <ChevronTop v-if="isAlt" class="hotkey__icon" :size="14" />
       <div class="hotkey__text">
         {{ hotkey }}
       </div>
@@ -47,7 +34,7 @@ defineProps<{
   padding: 4.5px 7.5px;
   background-color: var(--color-normal-40);
   color: var(--color-normal-90);
-  border: .5px solid var(--color-normal-50);
+  border: 0.5px solid var(--color-normal-50);
   border-radius: 2px;
   font-size: var(--fz-small);
   line-height: 74.5%;

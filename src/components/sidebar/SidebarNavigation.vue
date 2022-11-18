@@ -16,7 +16,7 @@ const activeSections = computed(() => configStore.activeSections);
         v-for="section in activeSections"
         :key="section.id"
         class="navigation-list__item section"
-        :class="{'section_active': section.hrefName === currentRouteLink}"
+        :class="{ section_active: section.hrefName === currentRouteLink }"
         @click="router.push(section.hrefName)"
       >
         <div class="section__description">

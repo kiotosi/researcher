@@ -22,7 +22,6 @@ const isDeletePopupShowed = ref(false);
  * @param tag - Selected tag
  */
 function selectTag(tag: Tag) {
-  
   // Delete tag
   if (isDeleteMode.value) {
     removedTag.value = tag;
@@ -53,7 +52,7 @@ async function deleteTag() {
 
   try {
     await saveTagList(configStore.currentWorkspace, tagStore.tags);
-  } catch(e) {
+  } catch (e) {
     console.error(errors.save.file.tag, e);
   }
 
@@ -69,7 +68,7 @@ async function deleteTag() {
     <TrashIcon
       :size="21"
       class="sidebar-taglist__trash"
-      :class="{'sidebar-taglist__trash_active': isDeleteMode}"
+      :class="{ 'sidebar-taglist__trash_active': isDeleteMode }"
       @click="isDeleteMode = !isDeleteMode"
     />
     <div class="sidebar-taglist__list">
@@ -77,7 +76,7 @@ async function deleteTag() {
         v-for="tag in tagList"
         :key="tag.id"
         class="sidebar-taglist__item"
-        :class="{'sidebar-taglist__item_shake': isDeleteMode}"
+        :class="{ 'sidebar-taglist__item_shake': isDeleteMode }"
         :name="tag.name"
         @click="selectTag(tag)"
       />

@@ -1,5 +1,10 @@
 import errors from '../data/error.define';
-import { readTextFile, BaseDirectory, createDir, writeTextFile } from '@tauri-apps/api/fs';
+import {
+  readTextFile,
+  BaseDirectory,
+  createDir,
+  writeTextFile,
+} from '@tauri-apps/api/fs';
 import { CONFIG_ROOT, TAGLIST_JSON } from '../data/path.define';
 import type { Tag, Workspace } from '../types/file.types';
 
@@ -9,10 +14,9 @@ import type { Tag, Workspace } from '../types/file.types';
  * @returns Default taglist
  */
 export async function initTagList(workspace: Workspace) {
-  
   // Trying to create a directory for check if directory exists
   await createDir(`${CONFIG_ROOT}/${workspace.path}`).catch(console.info);
-  
+
   // Writing new configuration file
   await writeTextFile(
     `${CONFIG_ROOT}/${workspace.path}/${TAGLIST_JSON}`,
@@ -29,13 +33,12 @@ export async function initTagList(workspace: Workspace) {
  * @returns Configuration from workspace
  */
 export async function loadTagList(workspace: Workspace): Promise<Tag[]> {
-  
   // Trying to reach the configuration file
   // If file is unavailable - rejecting the promise
   try {
     const tagListRaw = await readTextFile(
       `${CONFIG_ROOT}/${workspace.path}/${TAGLIST_JSON}`,
-      {dir: BaseDirectory.Config}
+      { dir: BaseDirectory.Config }
     );
     return JSON.parse(tagListRaw);
   } catch (_) {
@@ -50,9 +53,11 @@ export async function loadTagList(workspace: Workspace): Promise<Tag[]> {
  */
 export async function saveTagList(workspace: Workspace, tagList: Tag[]) {
   const configRaw = JSON.stringify(tagList);
-  
+
   // Trying to create a directory for check if directory exists
-  await createDir(`${CONFIG_ROOT}/${workspace.path}`, {dir: BaseDirectory.Config}).catch(console.info);
+  await createDir(`${CONFIG_ROOT}/${workspace.path}`, {
+    dir: BaseDirectory.Config,
+  }).catch(console.info);
   await writeTextFile(
     `${CONFIG_ROOT}/${workspace.path}/${TAGLIST_JSON}`,
     configRaw,

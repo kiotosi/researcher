@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, onUnmounted, ref} from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import HotkeyMain from '../design/HotkeyMain.vue';
 import debounce from '../../utils/debounce';
 
@@ -8,7 +8,6 @@ const searchInputRef = ref<HTMLInputElement | undefined>();
 const debounceSearch = debounce(() => search(inputText.value), 250);
 
 function handleHotkeys(ev: KeyboardEvent) {
-
   if (ev.metaKey && ev.key === 'k') {
     ev.preventDefault();
     searchInputRef.value?.focus();
@@ -25,7 +24,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleHotkeys);
-})
+});
 
 /**
  * Search through the all content in workspace
@@ -46,12 +45,9 @@ function search(text: string) {
       type="text"
       class="sidebar-search__input"
       @input="debounceSearch"
-    >
+    />
     <div class="sidebar-search__hotkey">
-      <HotkeyMain
-        :is-command="true"
-        hotkey="K"
-      />
+      <HotkeyMain :is-command="true" hotkey="K" />
     </div>
   </div>
 </template>
@@ -73,7 +69,6 @@ function search(text: string) {
     padding: 10px 12px;
     font-weight: 500;
 
-
     &::placeholder {
       color: var(--color-normal-90);
     }
@@ -81,7 +76,7 @@ function search(text: string) {
 
   &__hotkey {
     margin-left: 4px;
-    transition: all .1s ease-in-out;
+    transition: all 0.1s ease-in-out;
     transform: scale(1);
   }
 

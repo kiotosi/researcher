@@ -6,7 +6,7 @@ import { useConfigStore } from '../../store/configStore';
 import { useRouter } from 'vue-router';
 import SidebarWorkspaceList from './SidebarWorkspaceList.vue';
 
-const configStore = useConfigStore()
+const configStore = useConfigStore();
 const currentWorkspace = computed(() => configStore.currentWorkspace);
 const router = useRouter();
 const currentRoute = computed(() => router.currentRoute.value);
@@ -14,10 +14,7 @@ const isChoosing = ref(false);
 </script>
 
 <template>
-  <div
-    class="sidebar-workspace"
-    @click="() => isChoosing = true"
-  >
+  <div class="sidebar-workspace" @click="() => (isChoosing = true)">
     <BackArrow
       v-show="currentRoute.path !== '/'"
       :size="22"
@@ -32,7 +29,7 @@ const isChoosing = ref(false);
   <Teleport to="#modal">
     <SidebarWorkspaceList
       v-if="isChoosing"
-      @close="() => isChoosing = false"
+      @close="() => (isChoosing = false)"
     />
   </Teleport>
 </template>

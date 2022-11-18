@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CogIcon from 'vue-material-design-icons/Cog.vue';
-import UserIcon from 'vue-material-design-icons/Account.vue'
-import InformationIcon from 'vue-material-design-icons/InformationOutline.vue'
+import UserIcon from 'vue-material-design-icons/Account.vue';
+import InformationIcon from 'vue-material-design-icons/InformationOutline.vue';
 </script>
 
 <template>
@@ -13,22 +13,22 @@ import InformationIcon from 'vue-material-design-icons/InformationOutline.vue'
 </template>
 
 <style scoped lang="scss">
-  .sidebar-footer {
-    position: absolute;
-    bottom: 16px;
-    left: 24px;
-    right: 24px;
-    display: flex;
-    justify-content: space-around;
-    gap: 12px;
+.sidebar-footer {
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: space-around;
+  gap: 12px;
 
-    &__icon {
-      cursor: pointer;
-      color: var(--color-normal-70);
+  &__icon {
+    cursor: pointer;
+    color: var(--color-normal-70);
 
-      &:hover {
-        color: var(--color-normal-90);
-      }
+    &:hover {
+      color: var(--color-normal-90);
     }
   }
+}
 </style>

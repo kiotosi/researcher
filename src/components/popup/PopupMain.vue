@@ -3,10 +3,7 @@ defineEmits(['close']);
 </script>
 
 <template>
-  <div
-    class="mask"
-    @click="$emit('close')"
-  />
+  <div class="mask" @click="$emit('close')" />
   <div class="modal">
     <slot />
   </div>
@@ -16,7 +13,7 @@ defineEmits(['close']);
 .mask {
   position: absolute;
   z-index: 500;
-  background-color: hsla(0,0,0,.2);
+  background-color: hsla(0, 0, 0, 0.2);
   inset: 0;
 }
 
@@ -30,7 +27,7 @@ defineEmits(['close']);
   border: 1px solid var(--color-normal-30);
   border-radius: 4px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
-  
+
   // Proportion should be smtng like: 1/4
   min-width: 200px;
   min-height: 50px;

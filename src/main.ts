@@ -1,22 +1,22 @@
-import App from "./App.vue";
-import routerOptions from "./router/router";
+import App from './App.vue';
+import routerOptions from './router/router';
 import enDictionary from './locales/en';
 import 'normalize.css';
-import { createPinia } from "pinia";
-import { createApp } from "vue";
-import { createRouter } from "vue-router";
-import { createI18n } from "vue-i18n";
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
+import { createRouter } from 'vue-router';
+import { createI18n } from 'vue-i18n';
 
-import "./style.scss";
+import './style.scss';
 
 // Plugin initialization
 const app = createApp(App);
 const router = createRouter(routerOptions);
 const pinia = createPinia();
-const i18n = createI18n<[typeof enDictionary], "en">({
+const i18n = createI18n<[typeof enDictionary], 'en'>({
   legacy: false,
   globalInjection: true,
-  locale: "en",
+  locale: 'en',
   messages: {
     en: enDictionary,
   },
@@ -26,4 +26,4 @@ const i18n = createI18n<[typeof enDictionary], "en">({
 app.use(router);
 app.use(pinia);
 app.use(i18n);
-app.mount("#app");
+app.mount('#app');

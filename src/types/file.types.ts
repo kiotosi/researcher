@@ -15,12 +15,12 @@ export interface Section {
 }
 
 export interface Workspace {
-  id: number,
-  name: string,
-  path: string
+  id: number;
+  name: string;
+  path: string;
 }
 
 export interface Tag {
-  name: string,
-  id: number,
+  name: string;
+  id: number;
 }
