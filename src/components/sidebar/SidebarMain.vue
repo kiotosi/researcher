@@ -5,7 +5,7 @@ import SidebarWorkspace from './SidebarWorkspace.vue';
 import SidebarFooter from './SidebarFooter.vue';
 import { useRouter } from 'vue-router';
 import { computed } from 'vue';
-import routes from '../../data/router.define';
+import { ADDITIONAL_PATHS } from '../../data/router.define';
 import SidebarTagList from './SidebarTagList.vue';
 
 const router = useRouter();
@@ -17,10 +17,10 @@ const currentRoute = computed(() => router.currentRoute.value);
     <SidebarWorkspace />
     <SidebarSearch class="sidebar__search" />
     <SidebarNavigation
-      v-show="currentRoute.path === routes.home.path"
+      v-show="ADDITIONAL_PATHS.includes(currentRoute.path)"
       class="sidebar__section-list"
     />
-    <SidebarTagList v-show="currentRoute.path !== routes.home.path" />
+    <SidebarTagList v-show="!ADDITIONAL_PATHS.includes(currentRoute.path)" />
     <SidebarFooter class="sidebar__footer" />
   </div>
 </template>

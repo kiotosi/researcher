@@ -1,7 +1,11 @@
-export default {
+const routerInfo = {
   home: {
     name: 'Home',
     path: '/',
+  },
+  info: {
+    name: "Info",
+    path: '/info'
   },
   link: {
     name: 'Link',
@@ -24,3 +28,11 @@ export default {
     path: '/settings',
   },
 };
+
+// Paths, that doesn't require tag list or hiding navigation list
+export const ADDITIONAL_PATHS = [
+  routerInfo.home.path,
+  routerInfo.info.path
+]
+
+export default routerInfo;
