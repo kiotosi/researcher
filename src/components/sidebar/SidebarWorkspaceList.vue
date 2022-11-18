@@ -9,13 +9,16 @@ import { loadConfig } from '../../service/configBus';
 import { LAST_USED_WORKSPACE } from '../../data/localStorage.define';
 import type { Workspace } from '../../types/file.types';
 import PopupWorkspaceRemove from '../popup/PopupWorkspaceRemove.vue';
+import { loadTagList } from '../../service/tagBus';
+import { useTagStore } from '../../store/tagStore';
 
 const emit = defineEmits(['close']);
 const isAdding = ref(false);
 const isRemoving = ref(false);
 const removingWorkspace = ref<Workspace | null>(null);
 
-const configStore = useConfigStore()
+const configStore = useConfigStore();
+const tagStore = useTagStore();
 const workspaceList = computed(() => configStore.workspaceList);
 const currentWorkspace = computed(() => configStore.currentWorkspace);
 
@@ -36,10 +39,18 @@ async function chooseWorkspace(workspace: Workspace) {
     configStore.config = config;
     configStore.currentWorkspace = workspace;
     localStorage.setItem(LAST_USED_WORKSPACE, workspace.id.toString());
-    emit('close');
   } catch (e) {
     console.error(errors.load.file.config, e);
   }
+
+  // Try to load tag list from `workspace.path/tags.json`
+  try {
+    const tagList = await loadTagList(workspace);
+    tagStore.tags = tagList;
+  } catch (e) {
+    console.error(errors.load.file.tag, e);
+  }
+  emit('close');
 }
 </script>
 
