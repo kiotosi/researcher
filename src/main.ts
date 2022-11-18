@@ -1,6 +1,7 @@
 import App from "./App.vue";
 import routerOptions from "./router/router";
 import enDictionary from './locales/en';
+import 'normalize.css';
 
 import {createPinia} from 'pinia';
 import { createApp } from "vue";
