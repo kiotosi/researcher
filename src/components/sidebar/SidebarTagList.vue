@@ -1,18 +1,13 @@
 <script setup lang="ts">
-import type {Tag} from '../../types/file.types';
+import { computed, ref } from 'vue';
+import { useTagStore } from '../../store/tagStore';
 import TagMain from '../design/TagMain.vue';
+import PopupTagDelete from '../popup/PopupTagDelete.vue';
 
-// TODO: Make tagStore
-const tagList: Tag[] = [
-  {
-    name: 'work',
-    id: 0
-  },
-  {
-    name: 'home',
-    id: 1
-  }
-]
+const tagStore = useTagStore();
+const tagList = computed(() => tagStore.tags);
+const isDeleteMode = ref(false);
+const isDeletePopupShowed = ref(false);
 </script>
 
 <template>

@@ -41,6 +41,10 @@ const activeSections = computed(() => configStore.activeSections);
   width: 100%;
   margin: 0;
   padding: 0;
+
+  &__item + &__item {
+    margin-top: 8px;
+  }
 }
 
 .section {
