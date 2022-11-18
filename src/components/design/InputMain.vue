@@ -8,7 +8,11 @@ defineProps({
 </script>
 
 <template>
-  <input :placeholder="placeholder" class="input" type="text" />
+  <input
+    :placeholder="placeholder"
+    class="input"
+    type="text"
+  >
 </template>
 
 <style scoped lang="scss">

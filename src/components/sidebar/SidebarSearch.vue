@@ -45,9 +45,12 @@ function search(text: string) {
       type="text"
       class="sidebar-search__input"
       @input="debounceSearch"
-    />
+    >
     <div class="sidebar-search__hotkey">
-      <HotkeyMain :is-command="true" hotkey="K" />
+      <HotkeyMain
+        :is-command="true"
+        hotkey="K"
+      />
     </div>
   </div>
 </template>

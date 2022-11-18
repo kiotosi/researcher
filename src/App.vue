@@ -73,10 +73,17 @@ onMounted(async () => {
 
 <template>
   <LoaderMain v-if="isAppLoading" />
-  <div v-else class="container">
+  <div
+    v-else
+    class="container"
+  >
     <SidebarMain />
     <RouterView />
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.container {
+  display: flex;
+}
+</style>

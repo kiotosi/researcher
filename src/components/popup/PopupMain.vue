@@ -3,7 +3,10 @@ defineEmits(['close']);
 </script>
 
 <template>
-  <div class="mask" @click="$emit('close')" />
+  <div
+    class="mask"
+    @click="$emit('close')"
+  />
   <div class="modal">
     <slot />
   </div>

@@ -9,7 +9,10 @@ defineProps({
 </script>
 
 <template>
-  <div class="button" :class="{ button_disabled: isDisabled }">
+  <div
+    class="button"
+    :class="{ button_disabled: isDisabled }"
+  >
     {{ text }}
   </div>
 </template>
