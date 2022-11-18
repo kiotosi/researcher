@@ -2,7 +2,10 @@
 import SidebarMain from './components/sidebar/SidebarMain.vue';
 
 import { onMounted, ref } from 'vue';
-import { bootstrapWorkspaceList, bootstrapConfig } from './utils/bootstrapConfig';
+import {
+  bootstrapWorkspaceList,
+  bootstrapConfig,
+} from './utils/bootstrapConfig';
 import { useConfigStore } from './store/configStore';
 import { useTagStore } from './store/tagStore';
 import { LAST_USED_WORKSPACE } from './data/localStorage.define';
@@ -45,7 +48,7 @@ onMounted(async () => {
   // TODO: Make loading of config.json and tags.json by one function - `loadWorkspaceFile(name: string)`
   // Try to load tags.json
   let tagList: Tag[];
-  console.group('Tags file')
+  console.group('Tags file');
   try {
     console.info('Trying to load tags.json');
     tagList = await loadTagList(lastUsedWorkspace);
@@ -70,10 +73,7 @@ onMounted(async () => {
 
 <template>
   <LoaderMain v-if="isAppLoading" />
-  <div
-    v-else
-    class="container"
-  >
+  <div v-else class="container">
     <SidebarMain />
     <RouterView />
   </div>

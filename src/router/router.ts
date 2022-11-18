@@ -1,8 +1,8 @@
-import HomeView from "../views/HomeView.vue";
-import LinkView from "../views/LinkView.vue";
-import routeInfo from "../data/router.define";
+import HomeView from '../views/HomeView.vue';
+import LinkView from '../views/LinkView.vue';
+import routeInfo from '../data/router.define';
 
-import { createWebHistory, RouteRecordRaw } from "vue-router";
+import { createWebHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -13,8 +13,8 @@ const routes: RouteRecordRaw[] = [
   {
     path: routeInfo.link.path,
     name: routeInfo.link.name,
-    component: LinkView
-  }
+    component: LinkView,
+  },
 ];
 
 export default {

@@ -1,26 +1,26 @@
 export default {
   home: {
     name: 'Home',
-    path: '/'
+    path: '/',
   },
   link: {
     name: 'Link',
-    path: '/link'
+    path: '/link',
   },
   book: {
     name: 'Book',
-    path: '/book'
+    path: '/book',
   },
   video: {
     name: 'Video',
-    path: '/video'
+    path: '/video',
   },
   note: {
     name: 'Notes',
-    path: '/note'
+    path: '/note',
   },
   settings: {
     name: 'Settings',
-    path: '/settings'
-  }
-}
+    path: '/settings',
+  },
+};

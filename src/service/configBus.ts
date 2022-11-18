@@ -3,11 +3,11 @@ import {
   BaseDirectory,
   createDir,
   writeTextFile,
-  removeDir
-} from "@tauri-apps/api/fs";
-import { CONFIG_ROOT, CONFIG_JSON } from "../data/path.define";
-import { DEFAULT_CONFIG } from "../data/config.define";
-import type { Config, Workspace } from "../types/file.types";
+  removeDir,
+} from '@tauri-apps/api/fs';
+import { CONFIG_ROOT, CONFIG_JSON } from '../data/path.define';
+import { DEFAULT_CONFIG } from '../data/config.define';
+import type { Config, Workspace } from '../types/file.types';
 
 /**
  * Initialize default config in selected workspace
@@ -56,7 +56,9 @@ export async function saveConfig(workspace: Workspace, config: Config) {
   const configRaw = JSON.stringify(config);
 
   // Trying to create a directory for check if directory exists
-  await createDir(`${CONFIG_ROOT}/${workspace.path}`, {dir: BaseDirectory.Config}).catch(console.info);
+  await createDir(`${CONFIG_ROOT}/${workspace.path}`, {
+    dir: BaseDirectory.Config,
+  }).catch(console.info);
   await writeTextFile(
     `${CONFIG_ROOT}/${workspace.path}/${CONFIG_JSON}`,
     configRaw,
@@ -69,5 +71,8 @@ export async function saveConfig(workspace: Workspace, config: Config) {
  * @param workspace Workspace to delete
  */
 export async function removeConfigDir(workspace: Workspace) {
-  await removeDir(`${CONFIG_ROOT}/${workspace.path}`, {dir: BaseDirectory.Config, recursive: true}).catch(console.info);
+  await removeDir(`${CONFIG_ROOT}/${workspace.path}`, {
+    dir: BaseDirectory.Config,
+    recursive: true,
+  }).catch(console.info);
 }

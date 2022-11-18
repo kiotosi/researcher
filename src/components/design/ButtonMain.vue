@@ -2,17 +2,14 @@
 defineProps({
   text: {
     required: true,
-    type: String
+    type: String,
   },
-  isDisabled: Boolean
+  isDisabled: Boolean,
 });
 </script>
 
 <template>
-  <div
-    class="button"
-    :class="{'button_disabled': isDisabled}"
-  >
+  <div class="button" :class="{ button_disabled: isDisabled }">
     {{ text }}
   </div>
 </template>

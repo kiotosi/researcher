@@ -10,7 +10,7 @@ import { removeConfigDir } from '../../service/configBus';
 import errors from '../../data/error.define';
 
 interface PopupWorkspaceRemoveProps {
-  workspace: Workspace
+  workspace: Workspace;
 }
 
 const props = defineProps<PopupWorkspaceRemoveProps>();
@@ -36,11 +36,11 @@ function handleHotkeys(ev: KeyboardEvent) {
 
 onMounted(() => {
   document.addEventListener('keydown', handleHotkeys);
-})
+});
 
 onUnmounted(() => {
   document.removeEventListener('keydown', handleHotkeys);
-})
+});
 
 /**
  * Check input from name reference
@@ -60,13 +60,15 @@ async function removeWorkspace() {
   }
 
   // Filtering removed workspace from other workspaces
-  const workspaceList = configStore.workspaceList.filter((workspace) => workspace.id !== props.workspace.id);
+  const workspaceList = configStore.workspaceList.filter(
+    (workspace) => workspace.id !== props.workspace.id
+  );
 
   // Trying to save info into workspace.json
   try {
     await saveWorkspace(workspaceList);
     configStore.workspaceList = workspaceList;
-  } catch(e) {
+  } catch (e) {
     console.error(errors.save.file.workspace, e);
     return;
   }
@@ -88,7 +90,7 @@ async function removeWorkspace() {
       </div>
       <InputMain
         class="popup-workspace-remove__input"
-        :class="{'popup-workspace-remove__input_invalid': isInvalid}"
+        :class="{ 'popup-workspace-remove__input_invalid': isInvalid }"
         :placeholder="workspace.name"
         @input="onInput"
       />

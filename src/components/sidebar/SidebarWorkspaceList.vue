@@ -27,7 +27,6 @@ const currentWorkspace = computed(() => configStore.currentWorkspace);
  * @param workspace Workspace to choose
  */
 async function chooseWorkspace(workspace: Workspace) {
-
   if (currentWorkspace.value.id === workspace.id) {
     emit('close');
     return;
@@ -55,16 +54,15 @@ async function chooseWorkspace(workspace: Workspace) {
 </script>
 
 <template>
-  <div
-    class="wrapper"
-    @click="$emit('close')"
-  >
+  <div class="wrapper" @click="$emit('close')">
     <div class="workspace-list">
       <div
         v-for="workspace in workspaceList"
         :key="workspace.id"
         class="workspace-list__item workspace-item"
-        :class="{ 'workspace-item_active': workspace.id === currentWorkspace.id }"
+        :class="{
+          'workspace-item_active': workspace.id === currentWorkspace.id,
+        }"
         @click.stop="chooseWorkspace(workspace)"
       >
         {{ workspace.name }}
@@ -72,7 +70,10 @@ async function chooseWorkspace(workspace: Workspace) {
           v-show="workspace.id !== currentWorkspace.id"
           :size="20"
           class="workspace-item__trash"
-          @click.stop="isRemoving = true; removingWorkspace = workspace"
+          @click.stop="
+            isRemoving = true;
+            removingWorkspace = workspace;
+          "
         />
       </div>
       <div
@@ -80,18 +81,12 @@ async function chooseWorkspace(workspace: Workspace) {
         @click.stop="isAdding = true"
       >
         {{ $t('sidebar.workspace.add') }}
-        <PlusIconCircle
-          :size="18"
-          class="workspace-item__add-icon"
-        />
+        <PlusIconCircle :size="18" class="workspace-item__add-icon" />
       </div>
     </div>
   </div>
   <Teleport to="#modal">
-    <PopupWorkspaceAdd
-      v-if="isAdding"
-      @close="isAdding = false"
-    />
+    <PopupWorkspaceAdd v-if="isAdding" @close="isAdding = false" />
     <PopupWorkspaceRemove
       v-if="isRemoving"
       :workspace="removingWorkspace as Workspace"
@@ -122,7 +117,6 @@ async function chooseWorkspace(workspace: Workspace) {
   width: 304px;
   top: 18px;
   left: 18px;
-
 }
 
 .workspace-item {
@@ -136,7 +130,7 @@ async function chooseWorkspace(workspace: Workspace) {
   display: flex;
   justify-content: space-between;
 
-  &+& {
+  & + & {
     margin-top: 8px;
   }
 

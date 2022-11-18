@@ -1,22 +1,22 @@
-import routes from "../data/router.define";
-import type { Config, Workspace } from "../types/file.types";
+import routes from '../data/router.define';
+import type { Config, Workspace } from '../types/file.types';
 import {
   LINK_JSON,
   BOOK_JSON,
   NOTE_JSON,
   VIDEO_JSON,
-} from "../data/path.define";
+} from '../data/path.define';
 
 export const DEFAULT_WORKSPACE_ID = 0;
 
 // Default config
 export const DEFAULT_CONFIG: Config = {
   isSynced: false,
-  password: "",
+  password: '',
   sections: [
     {
-      title: "Links",
-      emoji: "🔗",
+      title: 'Links',
+      emoji: '🔗',
       id: 0,
       path: LINK_JSON,
       order: 0,
@@ -24,8 +24,8 @@ export const DEFAULT_CONFIG: Config = {
       isActive: true,
     },
     {
-      title: "Books",
-      emoji: "📚",
+      title: 'Books',
+      emoji: '📚',
       id: 1,
       path: BOOK_JSON,
       hrefName: routes.book.path,
@@ -33,8 +33,8 @@ export const DEFAULT_CONFIG: Config = {
       isActive: true,
     },
     {
-      title: "Videos",
-      emoji: "📼",
+      title: 'Videos',
+      emoji: '📼',
       id: 2,
       hrefName: routes.video.path,
       path: VIDEO_JSON,
@@ -42,8 +42,8 @@ export const DEFAULT_CONFIG: Config = {
       isActive: true,
     },
     {
-      title: "Notes",
-      emoji: "📝",
+      title: 'Notes',
+      emoji: '📝',
       id: 3,
       hrefName: routes.note.path,
       path: NOTE_JSON,
@@ -56,6 +56,6 @@ export const DEFAULT_CONFIG: Config = {
 // Default workspace
 export const DEFAULT_WORKSPACE: Workspace = {
   id: 0,
-  name: "Default",
-  path: "default",
+  name: 'Default',
+  path: 'default',
 };
