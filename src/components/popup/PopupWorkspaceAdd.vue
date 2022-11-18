@@ -110,7 +110,9 @@ onUnmounted(() => {
 <template>
   <PopupMain @close="$emit('close')">
     <div class="popup-workspace-add">
-      <div class="popup-workspace-add__title">Add new workspace</div>
+      <div class="popup-workspace-add__title">
+        Add new workspace
+      </div>
       <InputMain
         class="popup-workspace-add__input"
         :class="{ 'popup-workspace-add__input_invalid': isInvalid }"

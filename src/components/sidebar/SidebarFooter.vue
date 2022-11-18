@@ -12,7 +12,10 @@ const router = useRouter();
   <div class="sidebar-footer">
     <CogIcon class="sidebar-footer__icon" />
     <UserIcon class="sidebar-footer__icon" />
-    <InformationIcon @click="router.push(routeInfo.info.path)" class="sidebar-footer__icon" />
+    <InformationIcon
+      class="sidebar-footer__icon"
+      @click="router.push(routeInfo.info.path)"
+    />
   </div>
 </template>
 

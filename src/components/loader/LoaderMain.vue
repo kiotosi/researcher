@@ -4,7 +4,9 @@
   <Transition>
     <div class="loader">
       <div class="loader__wrapper">
-        <h1 class="loader__heading">Researcher</h1>
+        <h1 class="loader__heading">
+          Researcher
+        </h1>
       </div>
     </div>
   </Transition>

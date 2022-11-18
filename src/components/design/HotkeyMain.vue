@@ -14,9 +14,21 @@ defineProps<{
 <template>
   <Transition>
     <div class="hotkey">
-      <CommandIcon v-if="isCommand" class="hotkey__icon" :size="14" />
-      <ShiftIcon v-if="isShift" class="hotkey__icon" :size="14" />
-      <ChevronTop v-if="isAlt" class="hotkey__icon" :size="14" />
+      <CommandIcon
+        v-if="isCommand"
+        class="hotkey__icon"
+        :size="14"
+      />
+      <ShiftIcon
+        v-if="isShift"
+        class="hotkey__icon"
+        :size="14"
+      />
+      <ChevronTop
+        v-if="isAlt"
+        class="hotkey__icon"
+        :size="14"
+      />
       <div class="hotkey__text">
         {{ hotkey }}
       </div>

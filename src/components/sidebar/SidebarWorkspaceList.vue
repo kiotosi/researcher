@@ -54,7 +54,10 @@ async function chooseWorkspace(workspace: Workspace) {
 </script>
 
 <template>
-  <div class="wrapper" @click="$emit('close')">
+  <div
+    class="wrapper"
+    @click="$emit('close')"
+  >
     <div class="workspace-list">
       <div
         v-for="workspace in workspaceList"
@@ -81,12 +84,18 @@ async function chooseWorkspace(workspace: Workspace) {
         @click.stop="isAdding = true"
       >
         {{ $t('sidebar.workspace.add') }}
-        <PlusIconCircle :size="18" class="workspace-item__add-icon" />
+        <PlusIconCircle
+          :size="18"
+          class="workspace-item__add-icon"
+        />
       </div>
     </div>
   </div>
   <Teleport to="#modal">
-    <PopupWorkspaceAdd v-if="isAdding" @close="isAdding = false" />
+    <PopupWorkspaceAdd
+      v-if="isAdding"
+      @close="isAdding = false"
+    />
     <PopupWorkspaceRemove
       v-if="isRemoving"
       :workspace="removingWorkspace as Workspace"

@@ -14,7 +14,10 @@ const isChoosing = ref(false);
 </script>
 
 <template>
-  <div class="sidebar-workspace" @click="() => (isChoosing = true)">
+  <div
+    class="sidebar-workspace"
+    @click="() => (isChoosing = true)"
+  >
     <BackArrow
       v-show="currentRoute.path !== '/'"
       :size="22"

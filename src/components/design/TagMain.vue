@@ -9,7 +9,10 @@ defineProps({
 </script>
 
 <template>
-  <div class="tag" :class="{ tag_active: isActive }">
+  <div
+    class="tag"
+    :class="{ tag_active: isActive }"
+  >
     <span class="tag__hash">#</span>
     {{ name }}
   </div>

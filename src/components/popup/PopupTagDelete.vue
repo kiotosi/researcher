@@ -12,7 +12,7 @@ const emit = defineEmits(['close', 'delete']);
       </div>
       <div class="popup-tag-delete__text">
         If you delete this tag - it will dissapear from
-        <i>all your linked items</i>!<br />
+        <i>all your linked items</i>!<br>
         You cannot restore this tag.
       </div>
       <div class="popup-tag-delete__footer">

@@ -1,4 +1,4 @@
-const routerInfo = {
+const routeInfo = {
   home: {
     name: 'Home',
     path: '/',
@@ -31,8 +31,8 @@ const routerInfo = {
 
 // Paths, that doesn't require tag list or hiding navigation list
 export const ADDITIONAL_PATHS = [
-  routerInfo.home.path,
-  routerInfo.info.path
+  routeInfo.home.path,
+  routeInfo.info.path
 ]
 
-export default routerInfo;
+export default routeInfo;
