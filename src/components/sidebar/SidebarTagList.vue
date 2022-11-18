@@ -5,9 +5,10 @@ import PopupTagDelete from '../popup/PopupTagDelete.vue';
 import errors from '../../data/error.define';
 import { computed, ref } from 'vue';
 import { useTagStore } from '../../store/tagStore';
-import { saveTagList } from '../../service/tagBus';
 import { useConfigStore } from '../../store/configStore';
+import { saveFile } from '../../service/innerWorkspaceBus';
 import type { Tag } from '../../types/file.types';
+import { TAGLIST_JSON } from '../../data/path.define';
 
 const configStore = useConfigStore();
 const tagStore = useTagStore();
@@ -51,7 +52,7 @@ async function deleteTag() {
   tagStore.deleteTag(removedTag.value.id);
 
   try {
-    await saveTagList(configStore.currentWorkspace, tagStore.tags);
+    await saveFile(configStore.currentWorkspace, TAGLIST_JSON, tagStore.tags);
   } catch (e) {
     console.error(errors.save.file.tag, e);
   }

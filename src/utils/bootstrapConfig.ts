@@ -1,5 +1,7 @@
+import { DEFAULT_CONFIG } from "../data/config.define";
 import errors from "../data/error.define";
-import { initConfig, loadConfig } from "../service/configBus";
+import { CONFIG_JSON } from "../data/path.define";
+import { loadFile, saveFile } from "../service/innerWorkspaceBus";
 import { initWorkspace, loadWorkspaces } from "../service/workspaceBus";
 import type { Config, Workspace } from "../types/file.types";
 
@@ -27,30 +29,4 @@ export async function bootstrapWorkspaceList(): Promise<Workspace[]> {
   }
   console.groupEnd();
   return workspaceList;
-}
-
-/**
- * Trying to load existing config.json, if it's not exist - create a new one
- * @param workspace Workspace where config.json is placed
- * @returns Configuration file
- */
-export async function bootstrapConfig(workspace: Workspace): Promise<Config> {
-  let config: Config;
-
-  // New group for config file info
-  console.group("Config file");
-  try {
-    config = await loadConfig(workspace);
-    console.log("Config file is loaded!");
-  } catch (e) {
-    // Informing a user about unavailable workspace.json
-    console.error(errors.load.file.config, e);
-    console.info("Trying to initialize a config file");
-
-    // Try to create new config.json
-    config = await initConfig(workspace);
-    console.info("Success!");
-  }
-  console.groupEnd();
-  return config;
 }
