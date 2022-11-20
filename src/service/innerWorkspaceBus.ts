@@ -5,7 +5,7 @@ import {
   writeTextFile,
   removeDir,
 } from '@tauri-apps/api/fs';
-import { CONFIG_ROOT, CONFIG_JSON } from '../data/path.define';
+import { CONFIG_ROOT } from '../data/path.define';
 import type { Workspace } from '../types/file.types';
 
 /**

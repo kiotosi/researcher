@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PopupMain from './PopupMain.vue';
 import ButtonMain from '../design/ButtonMain.vue';
-const emit = defineEmits(['close', 'delete']);
+defineEmits(['close', 'delete']);
 </script>
 
 <template>

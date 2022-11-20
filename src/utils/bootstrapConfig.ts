@@ -1,9 +1,6 @@
-import { DEFAULT_CONFIG } from "../data/config.define";
 import errors from "../data/error.define";
-import { CONFIG_JSON } from "../data/path.define";
-import { loadFile, saveFile } from "../service/innerWorkspaceBus";
 import { initWorkspace, loadWorkspaces } from "../service/workspaceBus";
-import type { Config, Workspace } from "../types/file.types";
+import type { Workspace } from "../types/file.types";
 
 /**
  * Try to load workspace list. If workspace.json is unavailable - initialize it

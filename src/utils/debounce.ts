@@ -4,7 +4,7 @@
  * @param timeout Amount of milliseconds
  * @returns Callback with debounce function
  */
-export default function debounce(func: any, timeout = 300) {
+export default function debounce(func: any, timeout = 300) { // eslint-disable-line @typescript-eslint/no-explicit-any
   let timer: ReturnType<typeof setTimeout>;
   return () => {
     clearTimeout(timer);
