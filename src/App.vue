@@ -87,6 +87,7 @@ onMounted(async () => {
   <div
     v-else
     class="container"
+    @contextmenu.prevent
   >
     <SidebarMain />
     <RouterView />
