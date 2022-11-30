@@ -4,12 +4,18 @@ defineProps({
     type: String,
     default: '',
   },
+  value: {
+    type: String,
+    default: '',
+    required: false
+  }
 });
 </script>
 
 <template>
   <input
     :placeholder="placeholder"
+    :value="value"
     class="input"
     type="text"
   >

@@ -50,7 +50,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="contextMenuRef" :style="{'top': coordinates.y + 'px', 'left': coordinates.x + 'px'}" class="context-menu">
+  <div
+    ref="contextMenuRef"
+    :style="{'top': coordinates.y + 'px', 'left': coordinates.x + 'px'}"
+    class="context-menu"
+  >
     <slot />
   </div>
 </template>

@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import LinkItem from '../components/link-manager/LinkItem.vue';
 import ContextMenu from '../components/design/ContextMenuMain.vue';
+import PopupLinkChange from '../components/popup/PopupLinkChange.vue';
 import { reactive, ref } from 'vue';
 import type { Link } from '../types/linkmanager.types';
+import PopupLinkDelete from '../components/popup/PopupLinkDelete.vue';
 
+let activeLinkItem: Link;
 const isContextShowed = ref(false);
 const contextMenuCoordinates = reactive({
   x: 0,
   y: 0
 });
+const isChanging = ref(false);
+const isDeleting = ref(false);
 
 // TODO: Implement LinkStore
 const linkList: Link[] = [
@@ -26,6 +31,10 @@ const linkList: Link[] = [
   }
 ];
 
+/**
+ * Event handler on context menu in link item
+ * @param ev Mouse click event
+ */
 function onLinkContext(ev: MouseEvent): void {
   isContextShowed.value = true;
   contextMenuCoordinates.x = ev.clientX;
@@ -41,7 +50,7 @@ function onLinkContext(ev: MouseEvent): void {
         v-for="link in linkList"
         :key="link.id"
         class="link-manager__item"
-        @contextmenu.prevent="onLinkContext" 
+        @contextmenu.prevent="(e) => {onLinkContext(e); activeLinkItem = link}" 
       >
         <LinkItem
           :tags="link.tags"
@@ -55,13 +64,29 @@ function onLinkContext(ev: MouseEvent): void {
     <!-- Context menu for link -->
     <ContextMenu
       v-if="isContextShowed"
-      @close="isContextShowed = false"
       :x="contextMenuCoordinates.x"
       :y="contextMenuCoordinates.y"
+      @close="isContextShowed = false"
     >
-      <div>Change link</div>
-      <div>Delete link</div>
+      <div @click.prevent="isChanging = true">
+        Change link
+      </div>
+      <div @click.prevent="isDeleting = true">Delete link</div>
     </ContextMenu>
+  </Teleport>
+  <Teleport to="#modal">
+    <PopupLinkChange
+      v-if="isChanging && activeLinkItem"
+      :title="activeLinkItem.title"
+      :url="activeLinkItem.url"
+      :tags="activeLinkItem.tags"
+      @close="isChanging = false"
+    />
+    <PopupLinkDelete
+      v-if="isDeleting && activeLinkItem"
+      :link="activeLinkItem"
+      @close="isDeleting = false"
+    />
   </Teleport>
 </template>
 
